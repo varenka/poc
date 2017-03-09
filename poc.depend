@@ -1,0 +1,54 @@
+# depslib dependency file v1.0
+1488942584 source:/home/varenka/Desktop/poc/main.cpp
+	<iostream>
+	"app.h"
+	"shader.h"
+
+1488910785 source:/home/varenka/Desktop/poc/window.cpp
+	"window.h"
+
+1488910864 /home/varenka/Desktop/poc/window.h
+	<SDL2/SDL.h>
+	<GL/glew.h>
+	<string>
+	<iostream>
+
+1488941232 source:/home/varenka/Desktop/poc/app.cpp
+	"app.h"
+
+1488922236 /home/varenka/Desktop/poc/app.h
+	"window.h"
+	"pgdirector.h"
+
+1489028721 /home/varenka/Desktop/poc/pgdirector.h
+	"line.h"
+
+1489028577 source:/home/varenka/Desktop/poc/pgdirector.cpp
+	"pgdirector.h"
+
+1488941634 source:/home/varenka/Desktop/poc/shader.cpp
+	"shader.h"
+
+1488941733 /home/varenka/Desktop/poc/shader.h
+	<GL/glew.h>
+	<fstream>
+	<iostream>
+	<string>
+
+1489025082 /home/varenka/Desktop/poc/vertex.h
+	<cstdlib>
+	<glm/glm.hpp>
+	<vector>
+	<ctime>
+	<iostream>
+	<GL/glew.h>
+
+1489025037 source:/home/varenka/Desktop/poc/vertex.cpp
+	"vertex.h"
+
+1489024836 /home/varenka/Desktop/poc/line.h
+	"vertex.h"
+
+1489024801 source:/home/varenka/Desktop/poc/line.cpp
+	"line.h"
+
