@@ -12,7 +12,7 @@
 #define STARTING_HEIGHT 0
 #define ISLAND_RADIUS 0.7
 // Number of vertices in the starting island
-#define STARTING_COAST_RESOLUTION 100
+#define STARTING_COAST_RESOLUTION 40
 
 // Color of continental shelf
 #define SHELF_COLOR vec3(0, 1, 1)
@@ -27,6 +27,7 @@ public:
     void Load();
     void Draw();
     void AddLine(const Line&);
+    void AppendLine(const vec3&);
 
     // Functions used in Generate()
     void CreateStartingIsland();

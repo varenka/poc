@@ -69,21 +69,54 @@ void PGDirector::Generate(double width)
 void PGDirector::CreateStartingIsland()
 {
     double radiansPerSegment = PI2 / STARTING_COAST_RESOLUTION;
-    for(double theta = 0; theta < PI2; theta += radiansPerSegment)
+    double theta = 0;
+
+    // Create first line
+    cout << "Creating new line:" << endl;
+    Vertex origin(vec3(cos(theta), sin(theta), STARTING_HEIGHT), SHELF_COLOR);
+    theta += radiansPerSegment;
+    Vertex endpoint(vec3(cos(theta), sin(theta), STARTING_HEIGHT), SHELF_COLOR);
+    cout << "\t" << *origin.GetPos() << endl;
+    cout << "\t" << *endpoint.GetPos() << endl;
+    AddLine(Line(origin, endpoint));
+    theta += radiansPerSegment;
+
+    while(theta < PI2)
     {
         cout << "Creating new line:" << endl;
-        Vertex origin(vec3(cos(theta), sin(theta), STARTING_HEIGHT), SHELF_COLOR);
+        vec3 endpoint(cos(theta), sin(theta), STARTING_HEIGHT);
+        cout << "\t" << endpoint << endl;
+        AppendLine(endpoint);
         theta += radiansPerSegment;
-        Vertex endpoint(vec3(cos(theta), sin(theta), STARTING_HEIGHT), SHELF_COLOR);
-        cout << "\t" << *origin.GetPos() << endl;
-        cout << "\t" << *endpoint.GetPos() << endl;
-        AddLine(Line(origin, endpoint));
+
+        // Instead of overlapping, add the last segment from the current position to (1, 0)
+        if(theta >= PI2)
+        {
+            AppendLine(vec3(cos(0), sin(0), STARTING_HEIGHT));
+            break;
+        }
     }
 }
 
 void PGDirector::AddLine(const Line& l)
 {
     m_lines.push_back(l);
+
+    m_drawCount += 2;
+}
+
+/**
+
+Instead of adding an entirely new line, this function uses the endpoint of
+the last line in m_lines as the origin of the line it adds
+
+**/
+void PGDirector::AppendLine(const vec3& p)
+{
+    Vertex base = *m_lines[m_lines.size() - 1].GetEndpoint();
+    Vertex origin(*base.GetPos(), *base.GetColor());
+    Vertex endpoint(p, *base.GetColor());
+    m_lines.push_back(Line(origin, endpoint));
 
     m_drawCount += 2;
 }
