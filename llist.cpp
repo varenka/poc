@@ -3,7 +3,7 @@
 template <typename T>
 llist<T>::llist()
 {
-
+    m_start = 0;
 }
 
 template <typename T>
@@ -37,6 +37,11 @@ node<T>* llist<T>::newNode(const T& d)
 template <typename T>
 unsigned int llist<T>::size()
 {
+    if(m_start == 0)
+    {
+        return 0;
+    }
+
     node<T>* current = m_start;
     unsigned int i = 1;
     while(current->next != 0)
@@ -47,30 +52,26 @@ unsigned int llist<T>::size()
     return i;
 }
 
+// Returns the last element in the list, or 0 if the list is empty
+template <typename T>
+node<T>* llist<T>::last()
+{
+    return this[this.size() - 1];
+}
+
 // Add a new node at the end of the list
 template <typename T>
 void llist<T>::push_back(const T& d)
 {
     node<T>* n = newNode(d);
 
-
-}
-
-// Overloaded array subscript functions to access the list like a vector
-template <typename T>
-node<T>& llist<T>::operator[](size_t idx)
-{
-    node<T>* current;
-    for(unsigned int i = 0; i < idx; i++)
+    // If there is nothing else already in the list, make this the starting element
+    if(m_start == 0)
     {
-        current = current->next;
+        m_start = n;
+        return;
     }
 
-    //TODO: Add bounds checking?
-    /*if(current == 0)
-    {
-        return
-    }*/
-    return current;
+    // else
+    this[this.size() - 1]->next = newNode(d);
 }
-

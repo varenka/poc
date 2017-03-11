@@ -4,7 +4,6 @@
 // A singly linked list template class
 
 template <typename T>
-
 struct node
 {
 	T data;
@@ -19,9 +18,27 @@ public:
 
     unsigned int size();
     void push_back(const T&);
+    node<T>* last();
 
-    node<T>& operator[](size_t);
-    const node<T>& operator[](size_t);
+    node<T>& operator[](unsigned int idx)
+    {
+        node<T>* current;
+        for(unsigned int i = 0; i < idx; i++)
+        {
+            current = current->next;
+        }
+
+        //TODO: Add bounds checking?
+        /*if(current == 0)
+        {
+            return
+        }*/
+        return current;
+    }
+    node<T>& operator[](unsigned int idx) const
+    {
+        return this[idx];
+    }
 
     virtual ~llist();
 private:

@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1489075544 source:/home/varenka/Desktop/poc/main.cpp
+1489244574 source:/home/varenka/Desktop/poc/main.cpp
 	<iostream>
 	"app.h"
 	"shader.h"
@@ -20,8 +20,9 @@
 	"window.h"
 	"pgdirector.h"
 
-1489110308 /home/varenka/Desktop/poc/pgdirector.h
+1489244514 /home/varenka/Desktop/poc/pgdirector.h
 	"line.h"
+	"llist.h"
 
 1489110240 source:/home/varenka/Desktop/poc/pgdirector.cpp
 	"pgdirector.h"
@@ -52,8 +53,8 @@
 1489024801 source:/home/varenka/Desktop/poc/line.cpp
 	"line.h"
 
-1489116315 source:/home/varenka/Desktop/poc/llist.cpp
+1489244461 source:/home/varenka/Desktop/poc/llist.cpp
 	"llist.h"
 
-1489112698 /home/varenka/Desktop/poc/llist.h
+1489244629 /home/varenka/Desktop/poc/llist.h
 
