@@ -56,22 +56,57 @@ unsigned int llist<T>::size()
 template <typename T>
 node<T>* llist<T>::last()
 {
-    return this[this.size() - 1];
+    node<T>* current = m_start;
+
+    /*while(current != 0)
+    {
+        current = current->next;
+    }
+    return current;*/
+    //cout << "Accessing this[" << this->size() - 1 << "].m_start" << endl;
+    return this[this->size() - 1].m_start;
 }
 
 // Add a new node at the end of the list
 template <typename T>
 void llist<T>::push_back(const T& d)
 {
+    cout << "Started push_back (d = " << d << ") ...";
     node<T>* n = newNode(d);
 
     // If there is nothing else already in the list, make this the starting element
     if(m_start == 0)
     {
         m_start = n;
+        cout << "Finished push_back" << endl;
+        return;
+    }
+    // else
+    /// BREAKS HERE
+    cout << "this->last() = " << last() << endl;
+    cout << " this->last()->data = " << last()->data << endl;
+    last()->next = 0;
+    cout << " this->last()->next = " << last()->next << endl;
+    cout << "WOW" << endl;
+    last()->next = n;
+    cout << "Finished push_back" << endl;
+}
+
+template <typename T>
+void llist<T>::print()
+{
+    if(m_start == 0)
+    {
         return;
     }
 
-    // else
-    this[this.size() - 1]->next = newNode(d);
+    node<T>* current = m_start;
+    cout << "Printing linked list:" << endl;
+    while(current != 0)
+    {
+        cout << "\tdata = " << current->data << endl;
+        cout << "\tnext = " << current->next << endl;
+
+        current = current->next;
+    }
 }

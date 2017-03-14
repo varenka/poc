@@ -71,21 +71,18 @@ void PGDirector::CreateStartingIsland()
     double radiansPerSegment = PI2 / STARTING_COAST_RESOLUTION;
     double theta = 0;
 
-    // Create first line
-    cout << "Creating new line:" << endl;
     Vertex origin(vec3(cos(theta), sin(theta), STARTING_HEIGHT), SHELF_COLOR);
     theta += radiansPerSegment;
     Vertex endpoint(vec3(cos(theta), sin(theta), STARTING_HEIGHT), SHELF_COLOR);
-    cout << "\t" << *origin.GetPos() << endl;
-    cout << "\t" << *endpoint.GetPos() << endl;
+
     AddLine(Line(origin, endpoint));
     theta += radiansPerSegment;
 
     while(theta < PI2)
     {
-        cout << "Creating new line:" << endl;
+
         vec3 endpoint(cos(theta), sin(theta), STARTING_HEIGHT);
-        cout << "\t" << endpoint << endl;
+
         AppendLine(endpoint);
         theta += radiansPerSegment;
 
@@ -165,6 +162,7 @@ void PGDirector::Load()
     // Set line width
     glLineWidth(0.4f);
 
+    /*
     cout << "Positions: " << endl;
     for(unsigned int i = 0; i < m_points.size(); i++)
     {
@@ -175,7 +173,7 @@ void PGDirector::Load()
     {
         cout << "\t" << m_colors[i] << endl;
     }
-
+    */
 }
 
 /**
@@ -187,7 +185,7 @@ void PGDirector::Draw()
 {
     glBindVertexArray(m_vertexArrayObject);
 
-    cout << "Drawing " << m_drawCount << " vertices" << endl;
+    //cout << "Drawing " << m_drawCount << " vertices" << endl;
     glDrawArrays(GL_LINES, 0, m_drawCount);
 
     glBindVertexArray(0);

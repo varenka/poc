@@ -2,6 +2,7 @@
 #define PGDIRECTOR_H
 #include "line.h"
 #include "llist.h"
+#include "llist.cpp"
 
 #define PI 3.14159
 #define PI2 (PI * 2)
