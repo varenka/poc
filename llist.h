@@ -19,16 +19,33 @@ class llist
 public:
     llist<T>();
 
-    unsigned int size();
+    /// Adding things to the list
     void push_back(const T&);
+    void insert(unsigned int, const T&);
+
+    /// Getting data from the list
     node<T>* last();
+    unsigned int size();
+    T* data();
 
     void print();
 
-    node<T>& operator[](unsigned int idx)
+
+    node<T>* operator[](unsigned int idx)
+    {
+        return getn(idx);
+    }
+
+    virtual ~llist();
+private:
+	node<T>* m_start;
+
+	node<T>* newNode(const T&);
+
+    node<T>* getn(unsigned int idx)
     {
         cout << "operator[] called" << endl;
-        node<T>* current;
+        node<T>* current = m_start;
         for(unsigned int i = 0; i < idx; i++)
         {
             current = current->next;
@@ -38,21 +55,11 @@ public:
         if(current == 0)
         {
             cout << "Tried to access nullptr" << endl;
-            return;
+            return m_start;
         }
         cout << "operator[] returned successfully" << endl;
         return current;
     }
-    node<T>& operator[](unsigned int idx) const
-    {
-        return this[idx];
-    }
-
-    virtual ~llist();
-private:
-	node<T>* m_start;
-
-	node<T>* newNode(const T&);
 };
 
 #endif // LLIST_H

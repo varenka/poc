@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1489456426 source:/home/varenka/Desktop/poc/main.cpp
+1489536258 source:/home/varenka/Desktop/poc/main.cpp
 	<iostream>
 	"app.h"
 	"shader.h"
@@ -13,7 +13,7 @@
 	<string>
 	<iostream>
 
-1488941232 source:/home/varenka/Desktop/poc/app.cpp
+1489525012 source:/home/varenka/Desktop/poc/app.cpp
 	"app.h"
 
 1488922236 /home/varenka/Desktop/poc/app.h
@@ -25,7 +25,7 @@
 	"llist.h"
 	"llist.cpp"
 
-1489453254 source:/home/varenka/Desktop/poc/pgdirector.cpp
+1489537556 source:/home/varenka/Desktop/poc/pgdirector.cpp
 	"pgdirector.h"
 
 1488941634 source:/home/varenka/Desktop/poc/shader.cpp
@@ -48,18 +48,18 @@
 1489025037 source:/home/varenka/Desktop/poc/vertex.cpp
 	"vertex.h"
 
-1489024836 /home/varenka/Desktop/poc/line.h
+1489536593 /home/varenka/Desktop/poc/line.h
 	"vertex.h"
 
-1489024801 source:/home/varenka/Desktop/poc/line.cpp
+1489536607 source:/home/varenka/Desktop/poc/line.cpp
 	"line.h"
 
-1489459295 source:/home/varenka/Desktop/poc/llist.cpp
+1489537853 source:/home/varenka/Desktop/poc/llist.cpp
 	"llist.h"
 
-1489459444 /home/varenka/Desktop/poc/llist.h
+1489537594 /home/varenka/Desktop/poc/llist.h
 	<iostream>
 
-1489459295 /home/varenka/Desktop/poc/llist.cpp
+1489537853 /home/varenka/Desktop/poc/llist.cpp
 	"llist.h"
 

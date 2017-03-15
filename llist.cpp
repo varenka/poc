@@ -56,40 +56,52 @@ unsigned int llist<T>::size()
 template <typename T>
 node<T>* llist<T>::last()
 {
+    if(m_start == 0)
+    {
+        return m_start;
+    }
+
     node<T>* current = m_start;
 
-    /*while(current != 0)
+    while(current->next != 0)
     {
         current = current->next;
     }
-    return current;*/
-    //cout << "Accessing this[" << this->size() - 1 << "].m_start" << endl;
-    return this[this->size() - 1].m_start;
+    return current;
 }
 
 // Add a new node at the end of the list
 template <typename T>
 void llist<T>::push_back(const T& d)
 {
-    cout << "Started push_back (d = " << d << ") ...";
+
     node<T>* n = newNode(d);
 
     // If there is nothing else already in the list, make this the starting element
     if(m_start == 0)
     {
         m_start = n;
-        cout << "Finished push_back" << endl;
         return;
     }
+
     // else
-    /// BREAKS HERE
-    cout << "this->last() = " << last() << endl;
-    cout << " this->last()->data = " << last()->data << endl;
-    last()->next = 0;
-    cout << " this->last()->next = " << last()->next << endl;
-    cout << "WOW" << endl;
     last()->next = n;
-    cout << "Finished push_back" << endl;
+}
+
+// Add a new node after the node at this[idx], and before this[idx + 1] (if it exists)
+template <typename T>
+void llist<T>::insert(unsigned int idx, const T& d)
+{
+    node<T>* n = newNode(d);
+
+    if(m_start == 0)
+    {
+        cout << "Tried to insert() into an empty list" << endl;
+        return;
+    }
+
+    n->next = getn(idx)->next;
+    getn(idx)->next = n;
 }
 
 template <typename T>
@@ -109,4 +121,27 @@ void llist<T>::print()
 
         current = current->next;
     }
+}
+
+// Creates an array of the entire list. must be delete[]ed after it is used
+template <typename T>
+T* llist<T>::data()
+{
+    if(m_start == 0)
+    {
+        return 0;
+    }
+    // allocate memory
+    T* pointer = new T[size()];
+
+    node<T>* current = m_start;
+    // add data
+    for(unsigned int i = 0; i < size(); i++)
+    {
+        pointer[i] = current->data;
+
+        current = current->next;
+    }
+
+    return pointer;
 }

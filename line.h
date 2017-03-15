@@ -10,6 +10,8 @@ public:
     inline Vertex* GetOrigin() { return &m_origin; }
     inline Vertex* GetEndpoint() { return &m_endpoint; }
 
+    vec3 Midpoint();
+
     virtual ~Line();
 private:
     Vertex m_origin;

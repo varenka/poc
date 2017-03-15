@@ -7,6 +7,6 @@ varying vec3 color0;
 
 void main()
 {
-	gl_Position = vec4(position, 1.0);
+	gl_Position = vec4(position.xzy, 1.0);
 	color0 = color;
 }

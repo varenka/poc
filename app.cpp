@@ -42,7 +42,7 @@ void App::Update()
         }
     }
 
-    m_window->Clear(0.15f, 0.15f, 0.15f, 1.0f);
+    m_window->Clear(0.0f, 0.0f, 0.0f, 1.0f);
     m_director.Draw();
     m_window->Update();
 

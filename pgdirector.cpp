@@ -71,17 +71,16 @@ void PGDirector::CreateStartingIsland()
     double radiansPerSegment = PI2 / STARTING_COAST_RESOLUTION;
     double theta = 0;
 
-    Vertex origin(vec3(cos(theta), sin(theta), STARTING_HEIGHT), SHELF_COLOR);
+    Vertex origin(vec3(cos(theta), STARTING_HEIGHT, sin(theta)), SHELF_COLOR);
     theta += radiansPerSegment;
-    Vertex endpoint(vec3(cos(theta), sin(theta), STARTING_HEIGHT), SHELF_COLOR);
+    Vertex endpoint(vec3(cos(theta), STARTING_HEIGHT, sin(theta)), SHELF_COLOR);
 
     AddLine(Line(origin, endpoint));
     theta += radiansPerSegment;
 
     while(theta < PI2)
     {
-
-        vec3 endpoint(cos(theta), sin(theta), STARTING_HEIGHT);
+        vec3 endpoint(cos(theta), STARTING_HEIGHT, sin(theta));
 
         AppendLine(endpoint);
         theta += radiansPerSegment;
@@ -89,7 +88,7 @@ void PGDirector::CreateStartingIsland()
         // Instead of overlapping, add the last segment from the current position to (1, 0)
         if(theta >= PI2)
         {
-            AppendLine(vec3(cos(0), sin(0), STARTING_HEIGHT));
+            AppendLine(vec3(cos(0), STARTING_HEIGHT, sin(0)));
             break;
         }
     }

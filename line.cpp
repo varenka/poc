@@ -10,3 +10,8 @@ Line::~Line()
 {
     //dtor
 }
+
+vec3 Line::Midpoint()
+{
+
+}
